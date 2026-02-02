@@ -1,42 +1,173 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Base Reset */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Header & Logo */
+header {
+  height: 70px;
+  background-color: #343a40;
+  color: white;
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.logo-box {
+  background: #007bff;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 900;
+  margin-right: 10px;
+}
+
+/* Layout Structure */
+.app-container {
+  display: flex;
+  height: calc(100vh - 70px);
+  width: 100%;
+}
+
+/* Sidebar */
+aside {
+  width: 280px;
+  background-color: white;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebar-section {
+  margin-bottom: 25px;
+}
+
+.sidebar-section h4 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Main Content Area */
+main {
+  flex: 1;
+  padding: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* AG Grid Overrides */
+.ag-theme-balham {
+  height: 100%;
+  width: 100%;
+}
+
+.printable-column {
+  background-color: #e8e8e8 !important; /* Enhanced contrast */
+}
+
+.a-side-header { background-color: #A0CCFF !important; }
+.b-side-header { background-color: #B0FFB0 !important; }
+
+/* Buttons & UI Elements */
+.btn {
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.btn-primary { background-color: #007bff; color: white; border-color: #0069d9; }
+.btn-dark { background-color: #444; color: white; border: 1px solid #666; }
+.btn-success { background-color: #28a745; color: white; border-color: #218838; }
+.btn-danger { background-color: #dc3545; color: white; border-color: #bd2130; }
+
+.button-group { display: flex; gap: 8px; align-items: center; }
+.group-spacer { margin-right: 30px; }
+
+/* Print Preparation View */
+.prep-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;
+  background: #f8f9fa;
+  overflow-y: auto;
+}
+
+.mockup-label {
+  width: 320px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   text-align: center;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-weight: bold;
+  margin-bottom: 30px;
+  line-height: 1.4;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Sheet Position Grid */
+.grid-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 45px);
+  gap: 8px;
+  margin-top: 15px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.grid-cell {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.grid-cell.active {
+  background: #007bff;
+  color: white;
+  border-color: #0056b3;
 }
 
-.card {
-  padding: 2em;
+/* Path Visualizer Header Component */
+.path-visualizer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #222;
+  padding: 5px 15px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  width: 320px;
+  height: 42px;
+  margin-right: auto;
 }
 
-.read-the-docs {
-  color: #888;
-}
+.node-label { font-size: 9px; color: #999; text-transform: uppercase; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.path-line { width: 100%; height: 2px; background: #555; position: relative; }
+.wire-badge { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: #f39c12; color: #000; padding: 1px 6px; border-radius: 10px; font-size: 10px; font-weight: 900; }
